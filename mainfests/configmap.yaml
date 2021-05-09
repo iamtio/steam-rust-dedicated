@@ -1,0 +1,21 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: steam-rust-dedicated
+data:
+  run.cfg: |-
+    +server.port 28015
+    +rcon.port 28016
+    +rcon.web 1
+    +server.maxplayers 10
+    +server.hostname "Server Name"
+    +server.identity "my_server_identity"
+    +server.level "Procedural Map"
+    +server.seed 19637
+    +server.worldsize 3000
+    +server.saveinterval 300
+    +server.globalchat true
+    +server.description "Description Here"
+    +server.headerimage "512x256px JPG/PNG headerimage link here"
+    +server.url "Website Here"

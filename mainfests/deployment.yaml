@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: steam-rust-dedicated
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: steam-rust-dedicated
+  template:
+    metadata:
+      labels:
+        app: steam-rust-dedicated
+    spec:
+      containers:
+      - name: steam-rust-dedicated
+        image: iamtio/steam-rust-dedicated:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: run-config
+          mountPath: /home/steam/run.cfg
+          subPath: run.cfg
+        - name: data
+          mountPath: /home/steam/rust-dedicated/
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "1700m"
+          limits:
+            memory: "6Gi"
+            cpu: "3000m"
+      volumes:
+        - name: run-config
+          configMap:
+            name: steam-rust-dedicated
+        - name: data
+          persistentVolumeClaim:
+            claimName: steam-rust-dedicated-data
