@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: steam-rust-dedicated-data
 spec:
-  storageClassName: local-path-fast
+  # storageClassName: local-path-fast
   accessModes:
     - ReadWriteOnce
   resources:
